@@ -1,4 +1,8 @@
+# 
 class OrderHandler():
+    
+    # function to calculate delivery_cost
+    
     def get_delivery_cost(self, distance):
         print(distance)
         if distance >0 and distance <10:
@@ -10,6 +14,8 @@ class OrderHandler():
         else:
             return 100000
 
+   # function to get original value of item
+
     def get_items_value(self, order_items):
         cost = 0
         for order_item in order_items:
@@ -17,12 +23,17 @@ class OrderHandler():
         
         return cost
     
+    # function to get the value of discount
+    
     def get_discount_value(self, offer, delivery_cost):
         if offer['offer_type'] == 'FLAT':
             return offer['offer_val']
         elif offer['offer_type'] == 'DELIVERY':
             return delivery_cost
 
+    
+    # function to calculate the final order_value
+    
     def calculate_order_value(self, order_items, distance, offer):
         items_value = self.get_items_value(order_items)
         delivery_cost = self.get_delivery_cost(distance/1000)
@@ -35,6 +46,8 @@ class OrderHandler():
         else:
             return items_value + delivery_cost
 
+     # function to get the final order_value
+    
     def get_order_value(self, data):
         offer = data['offer'] if 'offer' in data else None
         order_items = data['order_items']
@@ -45,3 +58,4 @@ class OrderHandler():
         return {
             'order_total' : order_value
         }
+    
