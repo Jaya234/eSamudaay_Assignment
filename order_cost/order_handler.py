@@ -1,6 +1,5 @@
 from numbers import Number
 
-
 class OrderHandler():
     def get_delivery_cost(self, distance):
         print(distance)
